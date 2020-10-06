@@ -14,26 +14,32 @@ namespace Algorithms
         /// <returns>Integer containing index of item in array.</returns>
         public static int Search<T>(T[] array, T item) where T : IComparable<T>
         {
-            int low = 0;
+            // Edges of search area.
+            int low = 0;  
             int high = array.Length - 1;
 
-            while (low <= high)
+            while (low <= high)   // Runs until there is more than one element.
             {
+                // Checking the element in the middle
                 int mid = (low + high) / 2;
                 T guess = array[mid];
+                // Item found.
                 if (guess.CompareTo(item) == 0)
                 {
                     return mid;
                 }
+                // Item is more than middle element.
                 if (guess.CompareTo(item) > 0)
                 {
                     high = mid - 1;
                 }
+                // Item is less than middle element.
                 else
                 {
                     low = mid + 1;
                 }
             }
+            // Item is not in array.
             return -1;
         }
     }
