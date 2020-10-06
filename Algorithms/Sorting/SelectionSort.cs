@@ -5,34 +5,66 @@ namespace Algorithms.Sorting
 {
     public static class SelectionSort
     {
-        public static T[] Sort<T>(T[] array) where T : IComparable<T>
+        /// <summary>
+        /// Selection sort algorithm for List.
+        /// </summary>
+        /// <param name="arr"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static List<T> Sort<T>(List<T> arr) where T : IComparable<T>
         {
-            T[] sorted = new T[array.Length];
-            for (int i = 0; i < array.Length; i++)
+            List<T> sorted = new List<T>();
+            while (arr.Count > 0)
             {
                 // Find the smallest element of the array.
-                int smallest = FindSmallest(array);
-                sorted[i] = array[smallest];
-
-                // TODO: Find a way to pop the element uot of array. Or switch to List.
-
-                array = Array
-                    .FindAll(array, x => x.CompareTo(sorted[i]) != 0);
+                int smallest = FindSmallest(arr);
+                sorted.Add(arr[smallest]);
+                arr.RemoveAt(smallest);
             }
             return sorted;
         }
 
-        private static int FindSmallest<T>(T[] array) where T : IComparable<T>
+        public static void Sort<T>(T[] arr) where T : IComparable<T>
+        {
+            T[] sorted = new T[arr.Length];
+            for (int i = 0; i < arr.Length; i++)
+            {
+                int smallest = FindSmallest(arr, i);
+                T temp = arr[i];
+                arr[i] = arr[smallest];
+                arr[smallest] = temp;
+            }
+        }
+
+        private static int FindSmallest<T>(T[] arr, int start) where T : IComparable<T>
         {
             // Storing the smallest element and its index.
-            T smallest = array[0];
+            T smallest = arr[start];
+            int smallestIndex = start;
+
+            for (int i = start+1; i < arr.Length; i++)
+            {
+                if (arr[i].CompareTo(smallest) < 0)
+                {
+                    smallest = arr[i];
+                    smallestIndex = i;
+                }
+            }
+
+            return smallestIndex;
+        }
+
+        private static int FindSmallest<T>(List<T> arr) where T : IComparable<T>
+        {
+            // Storing the smallest element and its index.
+            T smallest = arr[0];
             int smallestIndex = 0;
 
-            for (int i = 1; i < array.Length; i++)
+            for (int i = 1; i < arr.Count; i++)
             {
-                if (array[i].CompareTo(smallest) < 0)
+                if (arr[i].CompareTo(smallest) < 0)
                 {
-                    smallest = array[i];
+                    smallest = arr[i];
                     smallestIndex = i;
                 }
             }
