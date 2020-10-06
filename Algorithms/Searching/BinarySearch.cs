@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Algorithms
+namespace Algorithms.Searching
 {
     public static class BinarySearch
     {
