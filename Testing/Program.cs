@@ -13,7 +13,8 @@ namespace Testing
         static void Main(string[] args)
         {
             // TestBinarySearch();
-            TestSelectionSort();
+            // TestSelectionSort();
+            TestQuickSort();
         }
 
         static void TestBinarySearch()
@@ -37,11 +38,23 @@ namespace Testing
 
             SelectionSort.Sort(test2);
 
-            PrintArrayList(sorted);
-            PrintArrayList(test2);
+            PrintArrayOrList(sorted);
+            PrintArrayOrList(test2);
         }
 
-        static void PrintArrayList<T>(IEnumerable<T> arr)
+        static void TestQuickSort()
+        {
+            int[] test1 = { 72, 12, 6, 33, 81, 97, 37, 59, 52, 1, 20 };
+            char[] test2 = { 'z', 'y', 'a', 'b', 'q', 'k', 'l' };
+
+            QuickSort.Sort(test1, 0, test1.Length - 1);
+            QuickSort.Sort(test2, 0, test2.Length - 1);
+
+            PrintArrayOrList(test1);
+            PrintArrayOrList(test2);
+        }
+
+        static void PrintArrayOrList<T>(IEnumerable<T> arr)
         {
             foreach (T item in arr)
             {
