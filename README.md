@@ -1,6 +1,6 @@
 ## About
 
-While reading this book I had a thought about implementations of algorithms in languages other than C#. As training I've decided to make it myself. Here you can see the result. 
+While reading this book I had a thought about implementations of algorithms in languages other than Python. As training I've decided to make it myself. Here you can see the result in C#. 
 
 ## Structure
 
