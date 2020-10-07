@@ -14,7 +14,8 @@ namespace Testing
         {
             // TestBinarySearch();
             // TestSelectionSort();
-            TestQuickSort();
+            // TestQuickSort();
+            TestBreadthFirstSearch();
         }
 
         static void TestBinarySearch()
@@ -54,6 +55,25 @@ namespace Testing
             PrintArrayOrList(test2);
         }
 
+        static void TestBreadthFirstSearch()
+        {
+            var test1 = new Dictionary<string, string[]>()
+            {
+                { "you", new string[] { "alice", "bob", "claire" } },
+                { "bob", new string[] { "anuj", "peggy" } },
+                { "alice", new string[] { "peggy" } },
+                { "claire", new string[] { "thom", "jonny" } },
+                { "anuj", new string[0] },
+                { "peggy", new string[0] },
+                { "thom", new string[0] },
+                { "jonny", new string[0] }
+            };
+            
+            bool result = BreadthFirstSearch
+                .Search(test1, "you", PersonIsSeller);
+            Write($"{result}\n");
+        }
+
         static void PrintArrayOrList<T>(IEnumerable<T> arr)
         {
             foreach (T item in arr)
@@ -61,6 +81,11 @@ namespace Testing
                 Write($"{item}  ");
             }
             WriteLine();
+        }
+
+        static bool PersonIsSeller(string name)
+        {
+            return name[name.Length - 1] == 'm';
         }
     }
 }
