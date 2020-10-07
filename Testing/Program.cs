@@ -15,7 +15,8 @@ namespace Testing
             // TestBinarySearch();
             // TestSelectionSort();
             // TestQuickSort();
-            TestBreadthFirstSearch();
+            // TestBreadthFirstSearch();
+            TestDijkstrasAlgorithm();
         }
 
         static void TestBinarySearch()
@@ -27,7 +28,7 @@ namespace Testing
             WriteLine(
                 $"Right:     {Array.IndexOf(test1, 5)}\t{Array.IndexOf(test2, "cat")}\t{Array.IndexOf(test3, 'e')}");
             WriteLine(
-                $"Algorithm: {BinarySearch.Search(test1, 5)}\t{BinarySearch.Search(test2, "cat")}\t{BinarySearch.Search(test3, 'e')}");
+                $"Algorithm: {BinarySearch.Find(test1, 5)}\t{BinarySearch.Find(test2, "cat")}\t{BinarySearch.Find(test3, 'e')}");
         }
 
         static void TestSelectionSort()
@@ -70,8 +71,30 @@ namespace Testing
             };
             
             bool result = BreadthFirstSearch
-                .Search(test1, "you", PersonIsSeller);
+                .Find(test1, "you", PersonIsSeller);
             Write($"{result}\n");
+        }
+
+        static void TestDijkstrasAlgorithm()
+        {
+            var test1 = new Dictionary<string, Dictionary<string, int>>()
+            {
+                { "start", new Dictionary<string, int>() 
+                            { 
+                                { "a", 6 },
+                                { "b", 2 }
+                            } },
+                { "a", new Dictionary<string, int>() 
+                            { 
+                                { "finish", 1 }
+                            } },
+                { "b", new Dictionary<string, int>()
+                            { 
+                                { "a", 3 },
+                                { "finish", 5}
+                            } },
+                { "finish", new Dictionary<string, int>() }
+            };
         }
 
         static void PrintArrayOrList<T>(IEnumerable<T> arr)

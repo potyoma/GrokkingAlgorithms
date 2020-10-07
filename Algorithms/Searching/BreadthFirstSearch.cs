@@ -5,7 +5,7 @@ namespace Algorithms.Searching
 {
     public static class BreadthFirstSearch
     {
-        public static bool Search<T>(
+        public static bool Find<T>(
             Dictionary<T, T[]> graph, T start, Func<T, bool> condition) 
             where T : IComparable<T>
         {

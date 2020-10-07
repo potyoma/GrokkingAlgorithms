@@ -12,7 +12,7 @@ namespace Algorithms.Searching
         /// <param name="item">Object needed to find.</param>
         /// <typeparam name="T">Any type that extends IComparable.</typeparam>
         /// <returns>Integer containing index of item in array.</returns>
-        public static int Search<T>(T[] array, T item) where T : IComparable<T>
+        public static int Find<T>(T[] array, T item) where T : IComparable<T>
         {
             // Edges of search area.
             int low = 0;  
